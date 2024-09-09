@@ -3,7 +3,7 @@
     {{-- @section('content') --}}
     <div class="container mx-auto">
         <h1>Your Invoices</h1>
-        <button type="submit" class="btn btn-primary">Create Invoice</button>
+        <a href="{{ route('invoices.create') }}" class="btn btn-primary "><button>Create Invoice</button> </a>
 
         <table class="table">
             <thead>
@@ -11,6 +11,7 @@
                     <th>Invoice Number</th>
                     <th>Type</th>
                     <th>Created At</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,6 +20,8 @@
                         <td>{{ $invoice->invoice_number }}</td>
                         <td>{{ $invoice->type }}</td>
                         <td>{{ $invoice->created_at }}</td>
+                        <td> <a href="{{ route('invoices.show', $invoice->id) }}"> view </a></td>
+
                     </tr>
                 @endforeach
             </tbody>

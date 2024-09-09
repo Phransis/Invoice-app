@@ -31,8 +31,23 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('invoices', InvoiceController::class);
+
+    Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+
+    Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
+
+    Route::post('/invoices/store', [InvoiceController::class, 'store'])->name('invoices.store');
+
+    Route::get('/invoices/{invoice}', [InvoiceController::class, 'show'])->name('invoices.show');
+
+    Route::get('/invoices/{invoice}/edit', [InvoiceController::class, 'edit'])->name('invoices.edit');
+
+    Route::patch('/invoices/{invoice}', [InvoiceController::class, 'update'])->name('invoices.update');
+
+    Route::delete('/invoices/{invoice}', [InvoiceController::class, 'destroy'])->name('invoices.destroy');
+
+    // Route::resource('invoices', InvoiceController::class);
     Route::resource('taxes', TaxController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
