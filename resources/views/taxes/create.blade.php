@@ -1,6 +1,6 @@
 <x-layout>
     <div class="container">
-        <h1>Add Tax</h1>
+        <h1>Add New Tax</h1>
         <form action="{{ route('taxes.store') }}" method="POST">
             @csrf
             <div class="form-group">
